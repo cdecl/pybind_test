@@ -11,7 +11,7 @@ if (APPLE)
     link_directories(/usr/local/Cellar/python/3.6.5/Frameworks/Python.framework/Versions/3.6/lib)
     link_libraries(-lpython3.6 )
 else()
-    include_directories(pybind11/include )
+    include_directories(/usr/include/python3.5m pybind11/include )
 endif()
 
 
