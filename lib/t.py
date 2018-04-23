@@ -3,9 +3,13 @@ from sbind import *
 
 t = Item()
 t.set(10)
-print(t.get())
+print("public get(): {}".format(t.get()))
 
 t.s = 'test'
-print(t.s)
+print("std::string : {}".format(t.s))
 
-print(t.v)
+arr = [1,2,3]
+t.v = arr
+print("vector<int> : {}".format(t.v))
+
+

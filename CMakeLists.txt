@@ -5,7 +5,7 @@ project(sbind)
 #add_subdirectory(/subdir)
 
 
-set(CMAKE_CXX_FLAGS "-Wall -std=c++17 -O3")
+set(CMAKE_CXX_FLAGS "-Wall -std=c++14 -O3")
 
 include_directories(/usr/include/python3.5m/ pybind11/include )
 link_directories( )
