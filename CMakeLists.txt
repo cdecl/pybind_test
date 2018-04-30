@@ -9,8 +9,8 @@ find_package(PythonLibs 3 REQUIRED)
 
 include_directories(${PYTHON_INCLUDE_DIRS} pybind11/include )
 link_directories( )
-link_libraries( )
-
+link_libraries(${PYTHON_LIBRARIES} )
+message(${PYTHON_LIBRARIES})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -19,3 +19,10 @@ file(GLOB src "src/*.cpp")
 
 add_library(sbind SHARED ${src})
 set_target_properties(sbind PROPERTIES PREFIX "")
+
+if (APPLE)
+    add_custom_command(TARGET sbind 
+        POST_BUILD
+        COMMAND  cp ${CMAKE_BINARY_DIR}/lib/sbind.dylib ${CMAKE_BINARY_DIR}/lib/sbind.so 
+    )
+endif()
